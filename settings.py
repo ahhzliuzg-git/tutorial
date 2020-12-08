@@ -14,14 +14,19 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
-
+#USER_AGENT = 'tutorial s(+http://www.yourdomain.com)'
+USER_AGENT ='Mozilla/5.0' 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
-
+#ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
-
+ITEM_PIPELINES = {
+#    'file_download.pipelines.SomePipeline': 300,
+   #'scrapy.pipelines.files.FilesPipeline':100,
+   'tutorial.pipelines.TutorialPipeline':1,
+}
+FILES_STORE=r'download'
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
